@@ -43,7 +43,8 @@ export async function scrapeAmazonProduct(url: string) {
 
     const outOfStock =
       $("#availability span").text().trim().toLowerCase() ===
-      "currently unavailable";
+        "currently unavailable" ||
+      (!currentPrice && !originalPrice);
 
     const images =
       $("#imgBlkFront").attr("data-a-dynamic-image") ||
@@ -69,13 +70,13 @@ export async function scrapeAmazonProduct(url: string) {
       category: "cateogry",
       reviewsCount: 23,
       stars: 4.3,
-      isOutofStock: outOfStock,
+      isOutOfStock: outOfStock,
       description,
       lowestPrice: Number(currentPrice) || Number(originalPrice),
       highestPrice: Number(originalPrice) || Number(currentPrice),
       averagePrice: Number(currentPrice) || Number(originalPrice),
     };
-    
+
     return data;
   } catch (error: any) {
     throw new Error(`Failed to scrap product: ${error.message}`);
