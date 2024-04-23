@@ -85,10 +85,14 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                 {product.currency}
                 {formatNumber(product.currentPrice)}
               </p>
-              <p className="text-[34px] text-black opacity-50 line-through">
+              {product.isOutOfStock ? (
+                <p className="text-lg text-red-500">Currently unavailable</p>
+              ) : (
+                <p className="text-[34px] text-black opacity-50 line-through">
                 {product.currency}
                 {formatNumber(product.originalPrice)}
               </p>
+              )}
             </div>
 
             <div className="flex flex-col gap-4">
@@ -167,7 +171,6 @@ const ProductDetails = async ({ params: { id } }: Props) => {
       </div>
 
       <div className="flex flex-col gap-16">
-        
         <ProductDescription description={product?.description} />
 
         <button className="btn w-fit mx-auto flex items-center justify-center gap-3 min-w-[200px]">
