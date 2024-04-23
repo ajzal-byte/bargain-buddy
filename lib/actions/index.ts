@@ -85,7 +85,11 @@ export async function getSimilarProducts(productId: string) {
 
     const similarProducts = await Product.find({
       _id: { $ne: productId },
-    }).limit(3);
+    })
+      .sort({
+        _id: Math.random() > 0.5 ? 1 : -1,
+      })
+      .limit(3);
 
     return similarProducts;
   } catch (error) {
