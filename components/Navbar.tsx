@@ -10,16 +10,10 @@ const navIcons = [
 const Navbar = () => {
   return (
     <header className="w-full">
-      <nav className="nav">
+      <nav className="nav border-b-2">
         <Link href="/" className="flex items-center gap-1">
-          <Image
-            src="/assets/icons/logo.svg"
-            width={27}
-            height={27}
-            alt="logo"
-          />
           <p className="nav-logo">
-            Bargain<span className="text-primary">Buddy</span>
+            bb<span className="text-primary">.</span>
           </p>
         </Link>
         <div className="flex items-center gap-5">
