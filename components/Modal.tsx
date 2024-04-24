@@ -4,6 +4,7 @@ import { addUserEmailToProduct } from "@/lib/actions";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { FormEvent, Fragment, useState } from "react";
+import toast from "react-hot-toast";
 
 interface Props {
   productId: string;
@@ -18,11 +19,27 @@ const Modal = ({ productId }: Props) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await addUserEmailToProduct(productId, email);
+    const addedUser = await addUserEmailToProduct(productId, email);
+
+    if (typeof addedUser === "string") {
+      setIsSubmitting(false);
+      setEmail("");
+      closeModal();
+      return toast.error(addedUser);
+    }  
+
+    if (!addedUser) {
+      setIsSubmitting(false);
+      setEmail("");
+      closeModal();
+      return toast.error("This product is already being tracked");
+    }
 
     setIsSubmitting(false);
     setEmail("");
     closeModal();
+
+    if(addedUser) return toast.success("We've started tracking your product")
   };
 
   const closeModal = () => {
@@ -130,6 +147,12 @@ const Modal = ({ productId }: Props) => {
                   >
                     {isSubmitting ? "Submitting..." : "Start Tracking"}
                   </button>
+                  <div className="mt-2 flex justify-center">
+                    <p className="text-xs text-secondary">
+                      If you don't see the email soon, check your junk or spam
+                      folder.
+                    </p>
+                  </div>
                 </form>
               </div>
             </Transition.Child>

@@ -112,6 +112,8 @@ export async function addUserEmailToProduct(
       (user: User) => user.email === userEmail
     );
 
+    if (userExists) return false;
+
     if (!userExists) {
       product.users.push({ email: userEmail });
 
@@ -121,7 +123,9 @@ export async function addUserEmailToProduct(
 
       await sendEmail(emailContent, [userEmail]);
     }
+    return true;
   } catch (error) {
     console.error(error);
+    return (error as Error).message;
   }
 }

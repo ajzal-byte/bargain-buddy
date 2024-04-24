@@ -1,4 +1,5 @@
 import { PriceHistoryItem } from "@/types";
+import toast from "react-hot-toast";
 
 export function extractPrice(...elements: any) {
   for (const element of elements) {
