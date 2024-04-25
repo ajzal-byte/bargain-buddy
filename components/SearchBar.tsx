@@ -1,6 +1,7 @@
 "use client";
 
 import { scrapeAndStoreProduct } from "@/lib/actions";
+import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -26,6 +27,7 @@ const isValidAmazonProduct = (url: string) => {
 const SearchBar = () => {
   const [searchPrompt, setSearchPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,9 +40,14 @@ const SearchBar = () => {
       setIsLoading(true);
 
       // Scrape the product page
-      const product = await scrapeAndStoreProduct(searchPrompt);
-    } catch (error) {
-      console.error(error);
+      const { productId }: any = await scrapeAndStoreProduct(searchPrompt);
+      router.push(`/products/${productId}`)
+
+      // redirect(`/products/${productId}`);
+    } catch (error: any) {
+      console.error("error while redirecting", error);
+      console.log(error);
+      toast.error(error.message);
     } finally {
       setIsLoading(false);
     }

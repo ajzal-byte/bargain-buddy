@@ -44,6 +44,9 @@ export async function scrapeAndStoreProduct(productUrl: string) {
     );
 
     revalidatePath(`/products/${newProduct._id}`);
+    const productId = newProduct._id.toString();
+    console.log({ productId });
+    return { productId };
   } catch (error: any) {
     throw new Error(`Failed to create/update product: ${error.message}`);
   }
