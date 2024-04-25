@@ -1,19 +1,19 @@
 import { EmailContent, EmailProductInfo, NotificationType } from "@/types";
 import nodemailer from "nodemailer";
 
-const Notification = {
+export const Notification = {
   WELCOME: "WELCOME",
   CHANGE_OF_STOCK: "CHANGE_OF_STOCK",
   LOWEST_PRICE: "LOWEST_PRICE",
   THRESHOLD_MET: "THRESHOLD_MET",
 };
 
+export const THRESHOLD_PERCENTAGE = 40;
+
 export const generateEmailBody = (
   product: EmailProductInfo,
   type: NotificationType
 ) => {
-  const THRESHOLD_PERCENTAGE = 40;
-
   const shortenedTitle =
     product.title.length > 20
       ? `${product.title.substring(0, 20)}...`
@@ -35,7 +35,7 @@ export const generateEmailBody = (
         <h3>${product.title} is back in stock!</h3>
         <p>We're excited to let you know that ${product.title} is now back in stock.</p>
         <p>Don't miss out - <a href="${product.url}" target="_blank" rel="noopener noreferrer">buy it now</a>!</p>
-        <img src="https://i.ibb.co/pwFBRMC/Screenshot-2023-09-26-at-1-47-50-AM.png" alt="Product Image" style="max-width: 100%;" />
+        <img src="https://i.ibb.co/VqbqNry/Screenshot-from-2024-04-25-13-07-17.png" alt="Product Image" style="max-width: 100%;" />
       </div>
       <p>Stay tuned for more updates on ${product.title} and other products you're tracking.</p>
     </div>
