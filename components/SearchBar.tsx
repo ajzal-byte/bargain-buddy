@@ -2,6 +2,7 @@
 
 import { scrapeAndStoreProduct } from "@/lib/actions";
 import React, { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 const isValidAmazonProduct = (url: string) => {
   try {
@@ -31,7 +32,7 @@ const SearchBar = () => {
 
     const isValidLink = isValidAmazonProduct(searchPrompt);
 
-    if (!isValidLink) return alert("Please provide a valid Amazon link");
+    if (!isValidLink) return toast.error("Please provide a valid Amazon link");
 
     try {
       setIsLoading(true);

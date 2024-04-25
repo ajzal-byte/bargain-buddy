@@ -27,13 +27,13 @@ const Home = async () => {
               />
             </p>
             <h1 className="head-text">
-              Unleash the Power of
+              Spend Wisely, <br /> Save Greatly with
               <span className="text-primary"> BargainBuddy</span>
             </h1>
 
             <p className="mt-6">
-              Powerful, self-serve product and growth analytics to help you
-              convert, engage, and retain more.
+              Embrace a smarter, more savvy approach to spending with our
+              intelligent price monitoring and deal-finding capabilities.
             </p>
             <SearchBar />
           </div>
