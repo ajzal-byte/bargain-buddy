@@ -105,9 +105,6 @@ export const sendEmail = async (
     subject: emailContent.subject,
   };
 
-  transporter.sendMail(mailOptions, (error: any, info: any) => {
-    if (error) return console.error(error);
-
-    console.log("Email sent: ", info);
-  });
+  await transporter.sendMail(mailOptions);
+  return {};
 };
