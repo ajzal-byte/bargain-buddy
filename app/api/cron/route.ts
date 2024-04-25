@@ -1,3 +1,5 @@
+"use server";
+
 import Product from "@/lib/models/product.model";
 import { connectToDB } from "@/lib/mongoose";
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer";
@@ -10,8 +12,8 @@ import {
 } from "@/lib/utils";
 import { NextResponse } from "next/server";
 
-export const maxDuration = 300;
-export const dynamic = "force-dynamic"
+export const maxDuration = 300; // This function can run for a maximum of 300 seconds
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export async function GET() {
