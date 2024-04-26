@@ -35,7 +35,7 @@ export const generateEmailBody = (
         <h3>${product.title} is back in stock!</h3>
         <p>We're excited to let you know that ${product.title} is now back in stock.</p>
         <p>Don't miss out - <a href="${product.url}" target="_blank" rel="noopener noreferrer">buy it now</a>!</p>
-        <img src="https://i.ibb.co/VqbqNry/Screenshot-from-2024-04-25-13-07-17.png" alt="Product Image" style="max-width: 100%;" />
+        <img src="https://i.ibb.co/dbNyYCn/Screenshot-from-2024-04-25-13-07-17.png" alt="Product Image" style="max-width: 100%;" />
       </div>
       <p>Stay tuned for more updates on ${product.title} and other products you're tracking.</p>
     </div>
@@ -98,7 +98,7 @@ export const sendEmail = async (
   const mailOptions = {
     from: {
       name: "BargainBuddy",
-      address: process.env.EMAIL!,
+      address: process.env.EMAIL_USER!,
     },
     to: sendTo,
     html: emailContent.body,
