@@ -1,4 +1,9 @@
-import { Modal, PriceInfoCard, ProductCard, ProductDescription } from "@/components";
+import {
+  Modal,
+  PriceInfoCard,
+  ProductCard,
+  ProductDescription,
+} from "@/components";
 import { getProductById, getSimilarProducts } from "@/lib/actions";
 import { formatNumber } from "@/lib/utils";
 import { Product } from "@/types";
@@ -45,7 +50,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               </Link>
             </div>
 
-            <div className="flex items-center gap-3">
+            {/* <div className="flex items-center gap-3">
               <div className="product-hearts">
                 <Image
                   src="/assets/icons/red-heart.svg"
@@ -76,7 +81,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                   height={20}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="product-info">
@@ -89,13 +94,13 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                 <p className="text-lg text-red-500">Currently unavailable</p>
               ) : (
                 <p className="text-[34px] text-black opacity-50 line-through">
-                {product.currency}
-                {formatNumber(product.originalPrice)}
-              </p>
+                  {product.currency}
+                  {formatNumber(product.originalPrice)}
+                </p>
               )}
             </div>
 
-            <div className="flex flex-col gap-4">
+            {/* <div className="flex flex-col gap-4">
               <div className="flex gap-3">
                 <div className="product-stars">
                   <Image
@@ -126,7 +131,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                 <span className="text-primary-green font-semibold">93%</span> of
                 buyers have recommended this
               </p>
-            </div>
+            </div> */}
           </div>
 
           <div className="my-7 flex flex-col gap-5">
@@ -181,7 +186,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
             height={22}
           />
 
-          <Link href="/" className="text-base text-white">
+          <Link href={product.url} target="_blank" className="text-base text-white">
             Buy Now
           </Link>
         </button>

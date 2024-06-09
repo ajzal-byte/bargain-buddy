@@ -149,7 +149,7 @@ const Modal = ({ productId }: Props) => {
                   </button>
                   <div className="mt-2 flex justify-center">
                     <p className="text-xs text-secondary">
-                      If you don't see the email soon, check your junk or spam
+                      If you don&apos;t see the email soon, check your junk or spam
                       folder.
                     </p>
                   </div>

@@ -3,11 +3,11 @@ import { HeroCarousel, SearchBar } from "@/components";
 import { getAllProducts } from "@/lib/actions";
 import ProductCard from "@/components/ProductCard";
 
-export const metadata = {
-  icons: {
-    icon: "/favicon.ico", // /public path
-  },
-};
+// export const metadata = {
+//   icons: {
+//     icon: "/favicon.ico", // /public path
+//   },
+// };
 
 const Home = async () => {
   const allProducts = await getAllProducts();
