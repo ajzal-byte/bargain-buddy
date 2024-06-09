@@ -44,6 +44,7 @@ export async function scrapeAndStoreProduct(productUrl: string) {
     );
 
     revalidatePath(`/products/${newProduct._id}`);
+    revalidatePath("/", "layout");
     const productId = newProduct._id.toString();
     console.log({ productId });
     return { productId };
